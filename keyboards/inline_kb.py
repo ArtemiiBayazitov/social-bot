@@ -18,7 +18,7 @@ active_ml_inline_kb = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text='Росгвардия', callback_data='police')]
 ])
 
-help_category_kb_1 = InlineKeyboardMarkup(inline_keyboard=[
+help_current_category_kb = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text='Льготы по ЖКХ', callback_data='benefit')],
     [InlineKeyboardButton(text='Бесплатная юридическая помощь', callback_data='law')],
     [InlineKeyboardButton(text='Психологическая помощь', callback_data='psycho')],
@@ -26,9 +26,6 @@ help_category_kb_1 = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text='Списание кредитных средств', callback_data='credit')],
     [InlineKeyboardButton(text='Единовременная выплата от региона', callback_data='payment_ul')],
     [InlineKeyboardButton(text='Страховое обеспечение', callback_data='insurance')],
-])
-
-help_category_kb_2 = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text='Удостоверение ветерана', callback_data='id')],
     [InlineKeyboardButton(text='Санаторно-курортное лечение', callback_data='recreation')],
     [InlineKeyboardButton(text='Оказание содействия в демобилизации', callback_data='demo_help')],
@@ -38,14 +35,29 @@ help_category_kb_2 = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text='Обучение ветеранов и их семей', callback_data='education')],
 ])
 
-help_category_kb_3 = InlineKeyboardMarkup(inline_keyboard=[
+
+help_demobilized_category_kb = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text='Льготы по ЖКХ', callback_data='benefit')],
+    [InlineKeyboardButton(text='Бесплатная юридическая помощь', callback_data='law')],
+    [InlineKeyboardButton(text='Психологическая помощь', callback_data='psycho')],
+    [InlineKeyboardButton(text='Содействие в предоставлении отпуска', callback_data='dayoff')],
+    [InlineKeyboardButton(text='Списание кредитных средств', callback_data='credit')],
+    [InlineKeyboardButton(text='Единовременная выплата от региона', callback_data='payment_ul')],
+    [InlineKeyboardButton(text='Страховое обеспечение', callback_data='insurance')],
+    [InlineKeyboardButton(text='Удостоверение ветерана', callback_data='id')],
+    [InlineKeyboardButton(text='Санаторно-курортное лечение', callback_data='recreation')],
+    [InlineKeyboardButton(text='Оказание содействия в демобилизации', callback_data='demo_help')],
+    [InlineKeyboardButton(text='Выплата за ранение 3 000 000', callback_data='damage')],
+    [InlineKeyboardButton(text='Страховка по инвалидности', callback_data='invalid')],
+    [InlineKeyboardButton(text='Единовременная выплата от страны', callback_data='payment_rf')],
+    [InlineKeyboardButton(text='Обучение ветеранов и их семей', callback_data='education')],
     [InlineKeyboardButton(text='Обеспечение средствами реабилитации', callback_data='TCP')],
     [InlineKeyboardButton(text='Дополнительное пенсионное обеспечение', callback_data='more_pension')],
     [InlineKeyboardButton(text='Трудоустройство ветеранов и их семей', callback_data='work')],
     [InlineKeyboardButton(text='Адаптация жилого помещения', callback_data='home')],
     [InlineKeyboardButton(text='Уход за инвалидами', callback_data='care')],
-    [InlineKeyboardButton(text='Пособие при увольнениии', callback_data='id')],
-    [InlineKeyboardButton(text='Удостоверение ветерана', callback_data='id')],
+    [InlineKeyboardButton(text='Пособие при увольнении', callback_data='dim_benefit')],
+    [InlineKeyboardButton(text='Медицинская помощь', callback_data='medicine')],
 ])
 
 more_info_inline_button = InlineKeyboardMarkup(inline_keyboard=[
@@ -55,5 +67,5 @@ more_info_inline_button = InlineKeyboardMarkup(inline_keyboard=[
 demobilized_inline_kb = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text='Уволенные по инвалидности', callback_data='dim_invalid')],
     [InlineKeyboardButton(text='Уволенные по возрасту', callback_data='dim_age')],
-    [InlineKeyboardButton(text='Уволенные по ВВК с кат. Д', callback_data='d_invalid')],
+    [InlineKeyboardButton(text='Уволенные по ВВК с кат. Д', callback_data='dim_d')],
 ])

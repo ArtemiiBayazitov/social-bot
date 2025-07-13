@@ -4,10 +4,13 @@ from aiogram.filters import CommandStart
 from aiogram.types import Message, CallbackQuery, ReplyKeyboardRemove
 from text.text import (welcome_text, benefit_text, law_text, psycho_text, dayoff_text, credit_text,
                        payment_ul_text, insurance_text, id_text, recreation_text, demo_help_text,
-                       damage_text, invalid_text, payment_rf_text, education_text)
-from keyboards.inline_kb import (category_inline_kb, active_ml_inline_kb, help_category_kb_1,
-                                 help_category_kb_2, more_info_inline_button, demobilized_inline_kb)
-from keyboards.reply_kb import show_more_button
+                       damage_text, invalid_text, payment_rf_text, education_text, TCP_text, work_text,
+                       home_text, care_text, dim_benefit_text, medicine_text, more_pension_text)
+from keyboards.inline_kb import (category_inline_kb, active_ml_inline_kb, help_current_category_kb,
+                                 help_demobilized_category_kb, more_info_inline_button, demobilized_inline_kb)
+
+from states import MainMenuStates
+from aiogram.fsm.state import State, StatesGroup
 
 router = Router()
 
@@ -30,13 +33,12 @@ async def get_data_active(call: CallbackQuery) -> None:
         parse_mode='HTML'
     )
 
-list_category = ['mobilized', 'contract', 'volunteer', 'police']
-
-@router.callback_query(F.data.in_(list_category))
+acive_list = ['mobilized', 'contract', 'volunteer', 'police']
+@router.callback_query(F.data.in_(acive_list))
 async def get_help_category(call: CallbackQuery) -> None:
     await call.message.answer(
         text='<b>Выберите подкатегорию</b>',
-        reply_markup=help_category_kb_1
+        reply_markup=help_current_category_kb
     )
     await call.message.answer(
         text='<b>Показать еще категории</b>',
@@ -161,7 +163,7 @@ async def invalid(call: CallbackQuery) -> None:
     ) 
 
 
-@router.callback_query(F.data == 'payment_uf')
+@router.callback_query(F.data == 'payment_rf')
 async def payment_rf(call: CallbackQuery) -> None:
     await call.message.answer(
         text=payment_rf_text,
@@ -179,6 +181,7 @@ async def education(call: CallbackQuery) -> None:
         
     )
 
+
 # Блок обработчиков демобилизованных
 @router.callback_query(F.data == 'demobilized')
 async def demobilized(call: CallbackQuery) -> None:
@@ -188,18 +191,78 @@ async def demobilized(call: CallbackQuery) -> None:
         parse_mode='HTML'
     )
 
+demobilized_list = ['dim_invalid', 'dim_age', 'dim_d']
 
-@router.callback_query(F.data == 'dim_invalid')
-async def dim_invalid(call: CallbackQuery) -> None:
+
+@router.callback_query(F.data.in_(demobilized_list))
+async def get_demobilized_category(call: CallbackQuery) -> None:
     await call.message.answer(
         text='<b>Выберите подкатегорию</b>',
-        reply_markup=demobilized_inline_kb,
+        reply_markup=help_demobilized_category_kb,
+    )
+    
+
+@router.callback_query(F.data == 'TCP')
+async def tcp(call: CallbackQuery) -> None:
+    await call.message.answer(
+        text=TCP_text,
+        reply_markup=more_info_inline_button,
         parse_mode='HTML'
     )
 
 
+@router.callback_query(F.data == 'medicine')
+async def medicine(call: CallbackQuery) -> None:
+    await call.message.answer(
+        text=medicine_text,
+        reply_markup=more_info_inline_button,
+        parse_mode='HTML'
+    )
 
 
+@router.callback_query(F.data == 'care')
+async def care(call: CallbackQuery) -> None:
+    await call.message.answer(
+        text=care_text,
+        reply_markup=more_info_inline_button,
+        parse_mode='HTML'
+    )
+
+
+@router.callback_query(F.data == 'more_pension')
+async def more_pension(call: CallbackQuery) -> None:
+    await call.message.answer(
+        text=more_pension_text,
+        reply_markup=more_info_inline_button,
+        parse_mode='HTML'
+    )
+
+
+@router.callback_query(F.data == 'home')
+async def home(call: CallbackQuery) -> None:
+    await call.message.answer(
+        text=home_text,
+        reply_markup=more_info_inline_button,
+        parse_mode='HTML'
+    )
+
+
+@router.callback_query(F.data == 'dim_benefit')
+async def dim_benefit(call: CallbackQuery) -> None:
+    await call.message.answer(
+        text=dim_benefit_text,
+        reply_markup=more_info_inline_button,
+        parse_mode='HTML'
+    )
+
+
+@router.callback_query(F.data == 'work')
+async def work(call: CallbackQuery) -> None:
+    await call.message.answer(
+        text=work_text,
+        reply_markup=more_info_inline_button,
+        parse_mode='HTML'
+    )
 
 
 # @router.callback_query(F.data == 'veteran')
