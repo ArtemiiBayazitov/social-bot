@@ -90,7 +90,7 @@ help_veterans_category_kb2 = InlineKeyboardMarkup(inline_keyboard=[
 
 ])
 
-help_family_spouse_category_kb1 = InlineKeyboardMarkup(inline_keyboard=[
+help_deceased_spouse_category_kb1 = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text='Льготы по ЖКХ', callback_data='benefit')],
     [InlineKeyboardButton(text='Бесплатная юридическая помощь', callback_data='law')],
     [InlineKeyboardButton(text='Психологическая помощь', callback_data='psycho')],
@@ -102,7 +102,7 @@ help_family_spouse_category_kb1 = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text='Трудоустройство ветеранов и семей погибших', callback_data='work')],
 ])
 
-help_family_spouse_category_kb2 = InlineKeyboardMarkup(inline_keyboard=[
+help_deceased_spouse_category_kb2 = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text='Удостоверение членов семьи погибшего', callback_data='id_family_veteran')],
     [InlineKeyboardButton(text='Медицинская помощь', callback_data='medicine')],
     [InlineKeyboardButton(text='Уход за инвалидами', callback_data='care')],
@@ -113,7 +113,7 @@ help_family_spouse_category_kb2 = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text='Обучение ветеранов и их семей', callback_data='education')],
 ])
 
-help_family_spouse_category_child_kb1 = InlineKeyboardMarkup(inline_keyboard=[
+help_deceased_spouse_category_child_kb1 = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text='Льготы по ЖКХ', callback_data='benefit')],
     [InlineKeyboardButton(text='Бесплатная юридическая помощь', callback_data='law')],
     [InlineKeyboardButton(text='Психологическая помощь', callback_data='psycho')],
@@ -127,6 +127,47 @@ help_family_spouse_category_child_kb1 = InlineKeyboardMarkup(inline_keyboard=[
 ])
 more_info_inline_button = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text='Узнать подробнее', url='https://сво.поддержкаграждан.рф/')]
+])
+
+help_family_category_kb = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text='Льготы по ЖКХ', callback_data='benefit')],
+    [InlineKeyboardButton(text='Бесплатная юридическая помощь', callback_data='law')],
+    [InlineKeyboardButton(text='Психологическая помощь', callback_data='psycho')],
+    [InlineKeyboardButton(text='Обеспечение средствами реабилитации', callback_data='TCP')],
+    [InlineKeyboardButton(text='Страховое обеспечение', callback_data='insurance')],
+    [InlineKeyboardButton(text='Медицинская помощь', callback_data='medicine')],
+    [InlineKeyboardButton(text='Уход за инвалидами', callback_data='care')],
+    [InlineKeyboardButton(text='Поиск безвести пропавших', callback_data='find')],
+])
+
+help_family_category_child_kb = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text='Льготы по ЖКХ', callback_data='benefit')],
+    [InlineKeyboardButton(text='Бесплатная юридическая помощь', callback_data='law')],
+    [InlineKeyboardButton(text='Психологическая помощь', callback_data='psycho')],
+    [InlineKeyboardButton(text='Обеспечение средствами реабилитации', callback_data='TCP')],
+    [InlineKeyboardButton(text='Страховое обеспечение', callback_data='insurance')],
+    [InlineKeyboardButton(text='Медицинская помощь', callback_data='medicine')],
+    [InlineKeyboardButton(text='Уход за инвалидами', callback_data='care')],
+    [InlineKeyboardButton(text='Поиск безвести пропавших', callback_data='find')],
+    [InlineKeyboardButton(text='Детский летний отдых', callback_data='kids_camp')],
+])
+
+help_pmc_inline_kb1 = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text='Удостоверение членов семьи погибшего', callback_data='id_family_veteran')],
+    [InlineKeyboardButton(text='Медицинская помощь', callback_data='medicine')],
+    [InlineKeyboardButton(text='Уход за инвалидами', callback_data='care')],
+    [InlineKeyboardButton(text='Обучение ветеранов и их семей', callback_data='education')],
+    [InlineKeyboardButton(text='Адаптация жилого помещения', callback_data='home')],
+    [InlineKeyboardButton(text='Дополнительное пенсионное обеспечение', callback_data='more_pension')],
+])
+
+help_pmc_inline_kb2 = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text='Трудоустройство ветеранов и семей погибших', callback_data='work')],
+    [InlineKeyboardButton(text='Санаторно-курортное лечение', callback_data='recreation')],
+    [InlineKeyboardButton(text='Психологическая помощь', callback_data='psycho')],
+    [InlineKeyboardButton(text='Бесплатная юридическая помощь', callback_data='law')],
+    [InlineKeyboardButton(text='Удостоверение ветерана', callback_data='id')],
+
 ])
 
 demobilized_inline_kb = InlineKeyboardMarkup(inline_keyboard=[
@@ -173,3 +214,8 @@ deceased_inline_kb = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text='Родители', callback_data='dec_parents')],
     [InlineKeyboardButton(text='Опекуны', callback_data='dec_guardian')],
 ])
+
+pmc_inline_kb = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text='Бойцы ЧВК', callback_data='pmc')]
+])
+

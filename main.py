@@ -9,16 +9,12 @@ from aiogram.enums import ParseMode
 from config import TOKEN
 from handlers import start
 
-
-
 dp = Dispatcher()
 
-  
+
 async def set_command(bot: Bot):
     commands = [
         BotCommand(command="start", description="Старт"),
-        BotCommand(command="help", description="Помощь"),
-        BotCommand(command="links", description="Ссылки на ресурс")
     ]
     await bot.set_my_commands(commands)
 

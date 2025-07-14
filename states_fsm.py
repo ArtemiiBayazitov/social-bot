@@ -1,3 +1,4 @@
+from re import L
 from aiogram.fsm.state import StatesGroup, State
 
 
@@ -22,5 +23,15 @@ class FamilyState(StatesGroup):
 
 
 class CandidateState(StatesGroup):
+    start = State()
+    show_more = State()
+
+
+class DeceasedState(StatesGroup):
+    start = State()
+    show_more = State()
+
+
+class PMCState(StatesGroup):
     start = State()
     show_more = State()
