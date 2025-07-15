@@ -1,22 +1,9 @@
 from aiogram import Router, F
 from aiogram.filters import CommandStart
-
+from main import Bot
 from aiogram.types import Message, CallbackQuery
-from text.text import (welcome_text, benefit_text, law_text, psycho_text, dayoff_text, credit_text,
-                       payment_ul_text, insurance_text, id_text, recreation_text, demo_help_text,
-                       damage_text, invalid_text, payment_rf_text, education_text, TCP_text, work_text,
-                       home_text, care_text, dim_benefit_text, medicine_text, more_pension_text,
-                       land_text, tax_benefit_text, grave_text, benefit_five_ml_text, regular_benefit_text,
-                       benefit_memory_text, id_family_veteran_text, pension_family_text, funerals_text,
-                       kids_camp_text, find_text)
-from keyboards.inline_kb import (category_inline_kb, active_ml_inline_kb, help_current_category_kb1,
-                                 help_demobilized_category_kb1, help_demobilized_category_kb2, 
-                                 more_info_inline_button, demobilized_inline_kb, help_current_category_kb2,
-                                 help_veterans_category_kb1, help_veterans_category_kb2, veteran_inline_kb,
-                                 family_inline_kb, help_deceased_spouse_category_kb1, help_deceased_spouse_category_kb2,
-                                 help_deceased_spouse_category_child_kb1, candidate_inline_kb, help_candidate_inline_kb,
-                                 show_more_inline_button, deceased_inline_kb, help_family_category_kb, 
-                                 help_family_category_child_kb, pmc_inline_kb, help_pmc_inline_kb1, help_pmc_inline_kb2)
+from text.text import *
+from keyboards.inline_kb import *
 from states_fsm import (ActiveState, DeceasedState, DemobilizedState, PMCState, 
                         VeteranState, FamilyState, CandidateState)
                         
@@ -37,18 +24,26 @@ async def cmd_start(message: Message) -> None:
     )
          
 # Блок обработчиков действующих военнослужащих
+
+active_set = {'mobilized', 'contract', 'volunteer', 'police'}
+
+ACTIVE_TITLE = {
+    'mobilized': 'Мобилизованные', 
+    'contract': 'Контрактника', 
+    'volunteer': 'Добровольцы', 
+    'police': 'Росгвардия'}
+
 @router.callback_query(F.data == 'active')
 @auto_delete_source_message
 async def get_data_active(call: CallbackQuery, state: FSMContext) -> None:
     await state.clear()
+
     await call.message.answer(
         text='<b>Выберите подкатегорию</b>',
         reply_markup=active_ml_inline_kb,
         parse_mode='HTML'
     )
     await state.set_state(ActiveState.start)
-
-active_set = {'mobilized', 'contract', 'volunteer', 'police'}
 
 
 @router.callback_query(F.data.in_(active_set))
