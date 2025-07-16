@@ -39,7 +39,7 @@ async def get_data_active(call: CallbackQuery, state: FSMContext) -> None:
     await state.clear()
 
     await call.message.answer(
-        text='<b>Выберите подкатегорию</b>',
+        text=path_text,
         reply_markup=active_ml_inline_kb,
         parse_mode='HTML'
     )
@@ -50,11 +50,11 @@ async def get_data_active(call: CallbackQuery, state: FSMContext) -> None:
 @auto_delete_source_message
 async def get_help_category_active(call: CallbackQuery, state: FSMContext) -> None:
     await call.message.answer(
-        text='<b>Выберите категорию помощи</b>',
+        text=option_text,
         reply_markup=help_current_category_kb1
         )
     await call.message.answer(
-        text='<b>👇</b>',
+        text=more_text,
         reply_markup=show_more_inline_button,
         parse_mode='HTML',
     )
@@ -64,7 +64,7 @@ async def get_help_category_active(call: CallbackQuery, state: FSMContext) -> No
 @router.callback_query(F.data == 'show_more', ActiveState.start)
 async def show_more(call: CallbackQuery, state: FSMContext) -> None:
     await call.message.answer(
-        text='<b>Дополнительные категории</b>', 
+        text=more_option_text, 
         reply_markup=help_current_category_kb2,
         parse_mode='HTML'
     )
@@ -216,7 +216,7 @@ async def education(call: CallbackQuery) -> None:
 @auto_delete_source_message
 async def demobilized(call: CallbackQuery) -> None:
     await call.message.answer(
-        text='<b>Выберите подкатегорию</b>',
+        text=path_text,
         reply_markup=demobilized_inline_kb,
         parse_mode='HTML'
     )
@@ -228,11 +228,11 @@ demobilized_set = {'dim_invalid', 'dim_age', 'dim_d'}
 @auto_delete_source_message
 async def get_demobilized_category(call: CallbackQuery, state: FSMContext) -> None:
     await call.message.answer(
-        text='<b>Выберите подкатегорию</b>',
+        text=path_text,
         reply_markup=help_demobilized_category_kb1,
     )
     await call.message.answer(
-        text='<b>👇</b>',
+        text=more_text,
         reply_markup=show_more_inline_button,
         parse_mode='HTML',
     )
@@ -243,7 +243,7 @@ async def get_demobilized_category(call: CallbackQuery, state: FSMContext) -> No
 # @auto_delete_source_message
 async def show_more_demobilized(call: CallbackQuery, state: FSMContext) -> None:
     await call.message.answer(
-        text='<b>Дополнительные категории</b>', 
+        text=more_option_text, 
         reply_markup=help_demobilized_category_kb2,
         parse_mode='HTML'
     )
@@ -324,7 +324,7 @@ async def work(call: CallbackQuery) -> None:
 @auto_delete_source_message
 async def veteran(call: CallbackQuery, state: FSMContext) -> None:
     await call.message.answer(
-        text='<b>Выберите подкатегорию</b>',
+        text=path_text,
         reply_markup=veteran_inline_kb,
         parse_mode='HTML'
     )
@@ -337,11 +337,11 @@ veteran_set = {'mobilized', 'contract', 'volunteer', 'police', 'PMC'}
 @auto_delete_source_message
 async def get_veteran_category(call: CallbackQuery, state: FSMContext) -> None:
     await call.message.answer(
-        text='<b>Выберите подкатегорию</b>',
+        text=path_text,
         reply_markup=help_veterans_category_kb1,
     )
     await call.message.answer(
-        text='<b>👇</b>',
+        text=more_text,
         reply_markup=show_more_inline_button,
         parse_mode='HTML',
     )
@@ -352,7 +352,7 @@ async def get_veteran_category(call: CallbackQuery, state: FSMContext) -> None:
 # @auto_delete_source_message
 async def show_more_veteran(call: CallbackQuery, state: FSMContext) -> None:
     await call.message.answer(
-        text='<b>Дополнительные категории</b>', 
+        text=more_option_text, 
         reply_markup=help_veterans_category_kb2,
         parse_mode='HTML'
     )
@@ -384,7 +384,7 @@ async def tax_benefit(call: CallbackQuery) -> None:
 # @auto_delete_source_message
 async def deseased(call: CallbackQuery, state: FSMContext) -> None:
     await call.message.answer(
-        text='<b>Выберите подкатегорию</b>',
+        text=path_text,
         reply_markup=deceased_inline_kb,
         parse_mode='HTML'
     )
@@ -398,23 +398,23 @@ family_set = {'dec_spouse', 'dec_parents', 'dec_guardian', 'dec_children'}
 async def get_deseased_category(call: CallbackQuery, state: FSMContext) -> None:
     if call.data == 'dec_children':
         await call.message.answer(
-            text='<b>Выберите подкатегорию</b>',
+            text=path_text,
             reply_markup=help_deceased_spouse_category_child_kb1,
             parse_mode='HTML'
         )
         await call.message.answer(
-            text='<b>👇</b>',
+            text=more_text,
             reply_markup=show_more_inline_button,
             parse_mode='HTML',
         )
     else:
         await call.message.answer(
-            text='<b>Выберите подкатегорию</b>',
+            text=path_text,
             reply_markup=help_deceased_spouse_category_kb1,
             parse_mode='HTML'
         )
         await call.message.answer(
-            text='<b>👇</b>',
+            text=more_text,
             reply_markup=show_more_inline_button,
             parse_mode='HTML',
         )
@@ -426,7 +426,7 @@ async def get_deseased_category(call: CallbackQuery, state: FSMContext) -> None:
 @auto_delete_source_message
 async def show_more_deseased(call: CallbackQuery, state: FSMContext) -> None:
     await call.message.answer(
-        text='<b>Дополнительные категории</b>',
+        text=more_option_text,
         reply_markup=help_deceased_spouse_category_kb2,
         parse_mode='HTML'
     )
@@ -517,7 +517,7 @@ async def kids_camp(call: CallbackQuery) -> None:
 @auto_delete_source_message
 async def candidate(call: CallbackQuery, state: FSMContext) -> None:
     await call.message.answer(
-        text='<b>Выберите подкатегорию</b>',
+        text=path_text,
         reply_markup=candidate_inline_kb,
         parse_mode='HTML'
     )
@@ -532,7 +532,7 @@ candidate_set = {
 @auto_delete_source_message
 async def get_candidate_category(call: CallbackQuery, state: FSMContext) -> None:
     await call.message.answer(
-        text='<b>Выберите категорию помощи</b>',
+        text=option_text,
         reply_markup=help_candidate_inline_kb,
     )
     await state.clear()
@@ -542,7 +542,7 @@ async def get_candidate_category(call: CallbackQuery, state: FSMContext) -> None
 @auto_delete_source_message
 async def family(call: CallbackQuery, state: FSMContext) -> None:
     await call.message.answer(
-        text='<b>Выберите подкатегорию</b>',
+        text=path_text,
         reply_markup=family_inline_kb,
         parse_mode='HTML'
     )
@@ -556,12 +556,12 @@ family_set = {'spouse', 'parents', 'guardian', 'children'}
 async def get_family_category(call: CallbackQuery, state: FSMContext) -> None:
     if call.data == 'children':
         await call.message.answer(
-            text='<b>Выберите подкатегорию</b>',
+            text=path_text,
             reply_markup=help_family_category_child_kb,
         )
     else:
         await call.message.answer(
-            text='<b>Выберите подкатегорию</b>',
+            text=path_text,
             reply_markup=help_family_category_kb,
         )
        
@@ -582,7 +582,7 @@ async def find(call: CallbackQuery) -> None:
 @auto_delete_source_message
 async def PMC(call: CallbackQuery, state: FSMContext) -> None:
     await call.message.answer(
-        text='<b>Выберите подкатегорию</b>',
+        text=path_text,
         reply_markup=pmc_inline_kb,
         parse_mode='HTML'
     )
@@ -593,11 +593,11 @@ async def PMC(call: CallbackQuery, state: FSMContext) -> None:
 @auto_delete_source_message
 async def get_pmc_category(call: CallbackQuery, state: FSMContext) -> None:
     await call.message.answer(
-        text='<b>Выберите подкатегорию</b>',
+        text=path_text,
         reply_markup=help_pmc_inline_kb1,
     )
     await call.message.answer(
-        text='<b>👇</b>',
+        text=more_text,
         reply_markup=show_more_inline_button,
         parse_mode='HTML',
     )
@@ -608,7 +608,7 @@ async def get_pmc_category(call: CallbackQuery, state: FSMContext) -> None:
 # @auto_delete_source_message
 async def show_more_pmc(call: CallbackQuery, state: FSMContext) -> None:
     await call.message.answer(
-        text='<b>Дополнительные категории</b>', 
+        text=more_option_text, 
         reply_markup=help_pmc_inline_kb2,
         parse_mode='HTML'
     )

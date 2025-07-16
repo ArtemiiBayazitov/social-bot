@@ -205,7 +205,7 @@ help_candidate_inline_kb = InlineKeyboardMarkup(inline_keyboard=[
 ])
 
 show_more_inline_button = InlineKeyboardMarkup(inline_keyboard=[
-    [InlineKeyboardButton(text='Показать еще категории', callback_data='show_more')]
+    [InlineKeyboardButton(text='Показать еще опции', callback_data='show_more')]
 ])  
 
 deceased_inline_kb = InlineKeyboardMarkup(inline_keyboard=[
