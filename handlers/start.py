@@ -1,5 +1,5 @@
 from aiogram import Router, F
-from aiogram.filters import CommandStart
+from aiogram.filters import CommandStart, Command
 from main import Bot
 from aiogram.types import Message, CallbackQuery
 from text.text import *
@@ -15,16 +15,32 @@ router = Router()
 
 
 @router.message(CommandStart())
-@router.message(F.text == 'Вернуться в начало')
 async def cmd_start(message: Message) -> None:
     await message.answer(
         text=welcome_text,
+        reply_markup=choice_inline_button,
+        parse_mode='HTML'
+    )
+
+
+@router.message(Command('choice'))
+async def choice_message(message: Message):
+    await message.answer(
+        text=choice_text,
         reply_markup=category_inline_kb,
         parse_mode='HTML'
     )
+
+@router.callback_query(F.data == 'choice')
+async def choice_callback(call: CallbackQuery):
+    await call.message.answer(
+        text=choice_text,
+        reply_markup=category_inline_kb,
+        parse_mode='HTML'
+    )
+
          
 # Блок обработчиков действующих военнослужащих
-
 active_set = {'mobilized', 'contract', 'volunteer', 'police'}
 
 ACTIVE_TITLE = {

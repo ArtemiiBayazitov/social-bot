@@ -15,6 +15,7 @@ dp = Dispatcher()
 async def set_command(bot: Bot):
     commands = [
         BotCommand(command="start", description="Старт"),
+        BotCommand(command="choice", description="Выбор категории"),
     ]
     await bot.set_my_commands(commands)
 

@@ -219,3 +219,6 @@ pmc_inline_kb = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text='Бойцы ЧВК', callback_data='pmc')]
 ])
 
+choice_inline_button = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text='Приступить к выбору', callback_data='choice')]
+])
